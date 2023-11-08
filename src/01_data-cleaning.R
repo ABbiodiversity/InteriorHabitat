@@ -68,11 +68,11 @@ arcpy$env$workspace <- paste0(getwd(), "/data/processed/InteriorHabitat_", HFI, 
 # Create the new fields
 arcpy$AddField_management(in_table = paste0(getwd(), "/data/processed/InteriorHabitat_", HFI,  ".gdb/HFI2021"), 
                           field_name = "Buffer_50", 
-                          field_type = "DOUBLE")
+                          field_type = "TEXT")
 
 arcpy$AddField_management(in_table = paste0(getwd(), "/data/processed/InteriorHabitat_", HFI,  ".gdb/HFI2021"), 
                           field_name = "Buffer_200", 
-                          field_type = "DOUBLE")
+                          field_type = "TEXT")
 
 # Use an update cursor to loop through the cells
 cursor <- arcpy$da$UpdateCursor(in_table = paste0(getwd(), "/data/processed/InteriorHabitat_", HFI,  ".gdb/HFI2021"), 
@@ -91,20 +91,20 @@ while (!is.null(row)) {
     # If older than 60, no buffer
     if(row[[2]] >= 60) {
       
-      row[[3]] <- 0
-      row[[3]] <- 0
+      row[[3]] <- paste0(0, " Meters")
+      row[[3]] <- paste0(0, " Meters")
       
     }
     
     # If less than 60, apply age weighted buffer
-    row[[3]] <- 50 * (1 - (row[[2]] / 60))
-    row[[4]] <- 50 * (1 - (row[[2]] / 60))
+    row[[3]] <- paste0(50 * (1 - (row[[2]] / 60)), " Meters")
+    row[[4]] <- paste0(50 * (1 - (row[[2]] / 60)), " Meters")
     
   }
   
   # All other feature types use the lookup table buffer
-  row[[3]] <- as.numeric(footprint.buffers[footprint.buffers$FEATURE_TY == row[[1]],  "BUFFER_50"][,1])
-  row[[4]] <- as.numeric(footprint.buffers[footprint.buffers$FEATURE_TY == row[[1]],  "BUFFER_200"][,1])
+  row[[3]] <- paste0(as.numeric(footprint.buffers[footprint.buffers$FEATURE_TY == row[[1]],  "BUFFER_50"][,1]), " Meters")
+  row[[4]] <- paste0(as.numeric(footprint.buffers[footprint.buffers$FEATURE_TY == row[[1]],  "BUFFER_200"][,1]), " Meters")
   
   # Update the value
   cursor$updateRow(row)
