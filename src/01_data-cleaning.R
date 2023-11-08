@@ -27,7 +27,7 @@ Start.time <- Sys.time()
 # Define HFI inventories
 HFI <- 2021
 hfi.path <- "K:/Anthropogenic/HumanFootprint/HFI/HFI_2021/HFI2021.gdb/HFI2021_Integrated/HFI2021"
-provincial.boundary <- "D:/spatial/provincial_boundary_2020.shp"
+provincial.boundary <- "D:/spatial/ab_base2.gdb/GeoAdmin/PROVINCIAL_POLYGON_2020"
 
 # Define footprint buffers
 footprint.buffers <- read_excel("data/lookup/footprint-buffer.xlsx", 
@@ -103,17 +103,19 @@ while (!is.null(row)) {
   # If harvest area, correct with the recovery year buffer
   if(row[[1]] == "HARVEST-AREA") {
     
-    # If older than 60, no buffer
-    if(row[[2]] >= 60) {
+    # If older than 60 years, no buffer
+    if(row[[2]] <= (HFI - 60)) {
       
       row[[3]] <- paste0(0, " Meters")
       row[[4]] <- paste0(0, " Meters")
       
+    } else {
+      
+      # If less than 60, apply age weighted buffer
+      row[[3]] <- paste0(50 * (1 - ((HFI - row[[2]]) / 60)), " Meters")
+      row[[4]] <- paste0(200 * (1 - ((HFI - row[[2]]) / 60)), " Meters")
+      
     }
-    
-    # If less than 60, apply age weighted buffer
-    row[[3]] <- paste0(50 * (1 - (row[[2]] / 60)), " Meters")
-    row[[4]] <- paste0(200 * (1 - (row[[2]] / 60)), " Meters")
     
   }
   
@@ -151,7 +153,18 @@ arcpy$PairwiseBuffer_analysis(in_features = paste0(getwd(), "/data/processed/Int
                               buffer_distance_or_field = "Buffer_500", 
                               method = "GEODESIC")
 
-# Dissole with the provincial boundary to get the remaining interior habitat
+# Erase with the provincial boundary to get the remaining interior habitat
+arcpy$PairwiseErase_analysis(in_features = paste0(getwd(), "/data/processed/InteriorHabitat_", HFI,  ".gdb/ProvincialBoundary"), 
+                             erase_features = "Buffer_50", 
+                             out_feature_class = "IntHab_500")
+
+arcpy$PairwiseErase_analysis(in_features = paste0(getwd(), "/data/processed/InteriorHabitat_", HFI,  ".gdb/ProvincialBoundary"), 
+                             erase_features = "Buffer_200", 
+                             out_feature_class = "IntHab_500")
+
+arcpy$PairwiseErase_analysis(in_features = paste0(getwd(), "/data/processed/InteriorHabitat_", HFI,  ".gdb/ProvincialBoundary"), 
+                             erase_features = "Buffer_500", 
+                             out_feature_class = "IntHab_500")
 
 # Create the end time
 End.time <- Sys.time()
