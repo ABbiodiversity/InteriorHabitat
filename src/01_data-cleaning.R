@@ -137,30 +137,33 @@ arcpy$PairwiseErase_analysis(in_features = "HFI2021",
                              erase_features = "HFI2021_OldHarvest", 
                              out_feature_class = "HFI2021_NoOldHarvest")
 
-# Create the two different buffers
+# Create the three different buffers
 arcpy$PairwiseBuffer_analysis(in_features = paste0(getwd(), "/data/processed/InteriorHabitat_", HFI,  ".gdb/HFI2021_NoOldHarvest"), 
                               out_feature_class = "Buffer_50", 
                               buffer_distance_or_field = "Buffer_50", 
-                              method = "GEODESIC")
+                              method = "PLANAR", 
+                              dissolve_option = "ALL")
 
 arcpy$PairwiseBuffer_analysis(in_features = paste0(getwd(), "/data/processed/InteriorHabitat_", HFI,  ".gdb/HFI2021_NoOldHarvest"), 
                               out_feature_class = "Buffer_200", 
                               buffer_distance_or_field = "Buffer_200", 
-                              method = "GEODESIC")
+                              method = "PLANAR", 
+                              dissolve_option = "ALL")
 
 arcpy$PairwiseBuffer_analysis(in_features = paste0(getwd(), "/data/processed/InteriorHabitat_", HFI,  ".gdb/HFI2021_NoOldHarvest"), 
                               out_feature_class = "Buffer_500", 
                               buffer_distance_or_field = "Buffer_500", 
-                              method = "GEODESIC")
+                              method = "PLANAR", 
+                              dissolve_option = "ALL")
 
 # Erase with the provincial boundary to get the remaining interior habitat
 arcpy$PairwiseErase_analysis(in_features = paste0(getwd(), "/data/processed/InteriorHabitat_", HFI,  ".gdb/ProvincialBoundary"), 
                              erase_features = "Buffer_50", 
-                             out_feature_class = "IntHab_500")
+                             out_feature_class = "IntHab_50")
 
 arcpy$PairwiseErase_analysis(in_features = paste0(getwd(), "/data/processed/InteriorHabitat_", HFI,  ".gdb/ProvincialBoundary"), 
                              erase_features = "Buffer_200", 
-                             out_feature_class = "IntHab_500")
+                             out_feature_class = "IntHab_200")
 
 arcpy$PairwiseErase_analysis(in_features = paste0(getwd(), "/data/processed/InteriorHabitat_", HFI,  ".gdb/ProvincialBoundary"), 
                              erase_features = "Buffer_500", 
