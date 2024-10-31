@@ -24,6 +24,9 @@ library(sf)
 # Load the relevant functions
 source("src/data-cleaning_functions.R")
 
+# Load the lookup table for the inventories
+hfi.lookup <- read.csv("data/lookup/hfi-year-lookup.csv")
+
 # Define HFI inventories
 HFI <- 2010
 hfi.path <- "K:/Anthropogenic/HumanFootprint/HFI/HFI_2010_v2/HFI_2010_Updated2023.gdb/HFI2010_Integrated"
@@ -73,8 +76,6 @@ clusterEvalQ(core.input, {
 # Footprint Cleaning #  
 ######################~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-start.time <- Sys.time()
-
 # Clean the NTS tiles
 parLapply(core.input, 
           as.list(nts.tiles), 
@@ -85,13 +86,9 @@ parLapply(core.input,
                                                            arcpy = arcpy), error = function(e) e)
 )
 
-clean.landcover.time <- Sys.time() - start.time
-
 ####################
 # Interior Habitat #  
 ####################~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-start.time <- Sys.time()
 
 # Calculate the appropriate buffers
 parLapply(core.input, 
@@ -101,8 +98,6 @@ parLapply(core.input,
                                                          hfi.path = hfi.path, 
                                                          arcpy = arcpy), error = function(e) e)
 )
-
-interior.habitat.time <- Sys.time() - start.time
 
 stopCluster(core.input)
 
