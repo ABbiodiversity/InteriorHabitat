@@ -16,6 +16,7 @@ rm(list=ls())
 gc()
 
 # Load libraries
+library(foreach)
 library(parallel)
 library(readxl)
 library(reticulate)
@@ -27,9 +28,7 @@ source("src/data-cleaning_functions.R")
 # Load the lookup table for the inventories
 hfi.lookup <- read.csv("data/lookup/hfi-year-lookup.csv")
 
-# Define HFI inventories
-HFI <- 2010
-hfi.path <- "K:/Anthropogenic/HumanFootprint/HFI/HFI_2010_v2/HFI_2010_Updated2023.gdb/HFI2010_Integrated"
+# Define provincial boundary
 provincial.boundary <- "D:/spatial/ab_base2.gdb/GeoAdmin/PROVINCIAL_POLYGON_2020"
 
 # Define the NTS tiles
@@ -37,8 +36,8 @@ nts.tiles <- read_sf("data/base/nts_snrc_250k_AB.shp")
 nts.tiles <- nts.tiles$NTS_SNRC
 
 # Define footprint buffers
-footprint.buffers <- read_excel("data/lookup/footprint-buffer.xlsx", 
-                                sheet = "buffers")
+footprint.buffers <- as.data.frame(read_excel("data/lookup/footprint-buffer.xlsx", 
+                                sheet = "buffers"))
 
 ##################################
 # Initialize parallel processing #
@@ -47,7 +46,7 @@ footprint.buffers <- read_excel("data/lookup/footprint-buffer.xlsx",
 # Define the cores for parallel processing
 n.clusters <- 12
 core.input <- makeCluster(n.clusters)
-clusterExport(core.input, c("hfi.path", "HFI", "provincial.boundary", "footprint.buffers", "footprint_cleaning", "interior_buffers"))
+clusterExport(core.input, c("hfi.lookup", "provincial.boundary", "footprint.buffers", "footprint_cleaning", "interior_buffers"))
 clusterEvalQ(core.input, {
   
   # Load libraries
@@ -77,27 +76,33 @@ clusterEvalQ(core.input, {
 ######################~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 # Clean the NTS tiles
-parLapply(core.input, 
-          as.list(nts.tiles), 
-          fun = function(tile) tryCatch(footprint_cleaning(nts.tile = tile, 
-                                                           hfi.year = HFI, 
-                                                           hfi.path = hfi.path, 
-                                                           footprint.buffers = footprint.buffers, 
-                                                           arcpy = arcpy), error = function(e) e)
-)
+hfi.series <- c(2018, 2019, 2020)
+foreach(hfi = hfi.series) %dopar% 
+  
+  parLapply(core.input, 
+            as.list(nts.tiles), 
+            fun = function(tile) tryCatch(footprint_cleaning(nts.tile = tile, 
+                                                             hfi.year = hfi, 
+                                                             hfi.path = hfi.lookup[hfi.lookup$HFI_YEAR == hfi, "Path"], 
+                                                             footprint.buffers = footprint.buffers, 
+                                                             arcpy = arcpy), error = function(e) e)
+  )
 
 ####################
 # Interior Habitat #  
 ####################~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 # Calculate the appropriate buffers
-parLapply(core.input, 
-          as.list(nts.tiles), 
-          fun = function(tile) tryCatch(interior_buffers(nts.tile = tile, 
-                                                         hfi.year = HFI, 
-                                                         hfi.path = hfi.path, 
-                                                         arcpy = arcpy), error = function(e) e)
-)
+foreach(hfi = hfi.series) %dopar% 
+  
+  parLapply(core.input, 
+            as.list(nts.tiles), 
+            fun = function(tile) tryCatch(interior_buffers(nts.tile = tile, 
+                                                           hfi.year = hfi, 
+                                                           hfi.path = hfi.lookup[hfi.lookup$HFI_YEAR == hfi, "Path"], 
+                                                           arcpy = arcpy), error = function(e) e)
+  )
+
 
 stopCluster(core.input)
 
@@ -115,7 +120,7 @@ library(sf)
 library(raster)
 
 # Define year
-hfi.years <- c(2010, 2021)
+hfi.years <- c(2010, 2018, 2019, 2020, 2021)
 
 # Initialize arcpy
 py_discover_config() # We need version 3.9
@@ -165,33 +170,33 @@ for (year in hfi.years) {
   arcpy$Merge_management(inputs = paste(tile.list$IntHab_500, collapse = ";"), 
                          output = paste0(getwd(), "/results/gis/InteriorHabitat_", year, ".gdb/IntHab_500"))
   
-  # Clip to the backfill layer
-  arcpy$PairwiseClip_analysis(in_features = paste0("D:/backfill/Version7.0/gdb_veghf_reference_condition_", year, ".gdb/veghf_", year), 
-                              clip_features = paste0(getwd(), "/results/gis/InteriorHabitat_", year, ".gdb/IntHab_50"), 
-                              out_feature_class = paste0(getwd(), "/results/gis/InteriorHabitat_", year, ".gdb/IntHab_50_backfill"))
-  
-  arcpy$PairwiseClip_analysis(in_features = paste0("D:/backfill/Version7.0/gdb_veghf_reference_condition_", year, ".gdb/veghf_", year), 
-                              clip_features = paste0(getwd(), "/results/gis/InteriorHabitat_", year, ".gdb/IntHab_200"), 
-                              out_feature_class = paste0(getwd(), "/results/gis/InteriorHabitat_", year, ".gdb/IntHab_200_backfill"))
-  
-  arcpy$PairwiseClip_analysis(in_features = paste0("D:/backfill/Version7.0/gdb_veghf_reference_condition_", year, ".gdb/veghf_", year), 
-                              clip_features = paste0(getwd(), "/results/gis/InteriorHabitat_", year, ".gdb/IntHab_500"), 
-                              out_feature_class = paste0(getwd(), "/results/gis/InteriorHabitat_", year, ".gdb/IntHab_500_backfill"))
-  
-  # Export table as a csv for processing
-  arcpy$ExportTable_conversion(in_table = paste0(getwd(), "/results/gis/InteriorHabitat_", year, ".gdb/IntHab_50_backfill"),
-                               out_table = paste0(getwd(), "/results/gis/InteriorHabitat_", year, "_50.csv"))
-  
-  arcpy$ExportTable_conversion(in_table = paste0(getwd(), "/results/gis/InteriorHabitat_", year, ".gdb/IntHab_200_backfill"),
-                               out_table = paste0(getwd(), "/results/gis/InteriorHabitat_", year, "_200.csv"))
-  
-  arcpy$ExportTable_conversion(in_table = paste0(getwd(), "/results/gis/InteriorHabitat_", year, ".gdb/IntHab_500_backfill"),
-                               out_table = paste0(getwd(), "/results/gis/InteriorHabitat_", year, "_500.csv"))
-  
-  # Clean up the files
-  arcpy$Delete_management(paste0(getwd(), "/results/tables/InteriorHabitat_", year, ".gdb/IntHab_50_backfill"))
-  arcpy$Delete_management(paste0(getwd(), "/results/tables/InteriorHabitat_", year, ".gdb/IntHab_200_backfill"))
-  arcpy$Delete_management(paste0(getwd(), "/results/tables/InteriorHabitat_", year, ".gdb/IntHab_500_backfill"))
+  # # Clip to the backfill layer
+  # arcpy$PairwiseClip_analysis(in_features = paste0("D:/backfill/Version7.0/gdb_veghf_reference_condition_", year, ".gdb/veghf_", year), 
+  #                             clip_features = paste0(getwd(), "/results/gis/InteriorHabitat_", year, ".gdb/IntHab_50"), 
+  #                             out_feature_class = paste0(getwd(), "/results/gis/InteriorHabitat_", year, ".gdb/IntHab_50_backfill"))
+  # 
+  # arcpy$PairwiseClip_analysis(in_features = paste0("D:/backfill/Version7.0/gdb_veghf_reference_condition_", year, ".gdb/veghf_", year), 
+  #                             clip_features = paste0(getwd(), "/results/gis/InteriorHabitat_", year, ".gdb/IntHab_200"), 
+  #                             out_feature_class = paste0(getwd(), "/results/gis/InteriorHabitat_", year, ".gdb/IntHab_200_backfill"))
+  # 
+  # arcpy$PairwiseClip_analysis(in_features = paste0("D:/backfill/Version7.0/gdb_veghf_reference_condition_", year, ".gdb/veghf_", year), 
+  #                             clip_features = paste0(getwd(), "/results/gis/InteriorHabitat_", year, ".gdb/IntHab_500"), 
+  #                             out_feature_class = paste0(getwd(), "/results/gis/InteriorHabitat_", year, ".gdb/IntHab_500_backfill"))
+  # 
+  # # Export table as a csv for processing
+  # arcpy$ExportTable_conversion(in_table = paste0(getwd(), "/results/gis/InteriorHabitat_", year, ".gdb/IntHab_50_backfill"),
+  #                              out_table = paste0(getwd(), "/results/gis/InteriorHabitat_", year, "_50.csv"))
+  # 
+  # arcpy$ExportTable_conversion(in_table = paste0(getwd(), "/results/gis/InteriorHabitat_", year, ".gdb/IntHab_200_backfill"),
+  #                              out_table = paste0(getwd(), "/results/gis/InteriorHabitat_", year, "_200.csv"))
+  # 
+  # arcpy$ExportTable_conversion(in_table = paste0(getwd(), "/results/gis/InteriorHabitat_", year, ".gdb/IntHab_500_backfill"),
+  #                              out_table = paste0(getwd(), "/results/gis/InteriorHabitat_", year, "_500.csv"))
+  # 
+  # # Clean up the files
+  # arcpy$Delete_management(paste0(getwd(), "/results/tables/InteriorHabitat_", year, ".gdb/IntHab_50_backfill"))
+  # arcpy$Delete_management(paste0(getwd(), "/results/tables/InteriorHabitat_", year, ".gdb/IntHab_200_backfill"))
+  # arcpy$Delete_management(paste0(getwd(), "/results/tables/InteriorHabitat_", year, ".gdb/IntHab_500_backfill"))
   
   print(year)
   

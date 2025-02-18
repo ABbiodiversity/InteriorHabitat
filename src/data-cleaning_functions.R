@@ -11,7 +11,7 @@
 # Footprint cleaning # 
 ######################~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-footprint_cleaning <- function(nts.tile, hfi.year, hfi.path, hfi.layer, footprint.buffers, arcpy) {
+footprint_cleaning <- function(nts.tile, hfi.year, hfi.path, footprint.buffers, arcpy) {
   
   ######################
   # Create geodatabase #
@@ -62,8 +62,8 @@ footprint_cleaning <- function(nts.tile, hfi.year, hfi.path, hfi.layer, footprin
   while (!is.null(row)) {
     
     # All feature types excluding harvest areas use the lookup table buffer
-    row[[3]] <- paste0(as.numeric(footprint.buffers[footprint.buffers$FEATURE_TY == row[[1]],  "BUFFER_50"][,1]), " Meters")
-    row[[4]] <- paste0(as.numeric(footprint.buffers[footprint.buffers$FEATURE_TY == row[[1]],  "BUFFER_200"][,1]), " Meters")
+    row[[3]] <- paste0(as.numeric(footprint.buffers[footprint.buffers$FEATURE_TY == row[[1]],  "BUFFER_50"]), " Meters")
+    row[[4]] <- paste0(as.numeric(footprint.buffers[footprint.buffers$FEATURE_TY == row[[1]],  "BUFFER_200"]), " Meters")
     
     # The 500m buffer is not prorated in any way
     row[[5]] <- "500 Meters"
@@ -72,7 +72,7 @@ footprint_cleaning <- function(nts.tile, hfi.year, hfi.path, hfi.layer, footprin
     if(row[[1]] == "HARVEST-AREA") {
       
       # If older than 60 years, no buffer
-      if(row[[2]] <= (HFI - 60)) {
+      if(row[[2]] <= (hfi.year - 60)) {
         
         row[[3]] <- paste0(0, " Meters")
         row[[4]] <- paste0(0, " Meters")
@@ -80,8 +80,8 @@ footprint_cleaning <- function(nts.tile, hfi.year, hfi.path, hfi.layer, footprin
       } else {
         
         # If less than 60, apply age weighted buffer
-        row[[3]] <- paste0(50 * (1 - ((HFI - row[[2]]) / 60)), " Meters")
-        row[[4]] <- paste0(200 * (1 - ((HFI - row[[2]]) / 60)), " Meters")
+        row[[3]] <- paste0(50 * (1 - ((hfi.year - row[[2]]) / 60)), " Meters")
+        row[[4]] <- paste0(200 * (1 - ((hfi.year - row[[2]]) / 60)), " Meters")
         
       }
       
