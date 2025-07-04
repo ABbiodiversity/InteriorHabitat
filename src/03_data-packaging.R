@@ -21,11 +21,7 @@ library(sf)
 library(raster)
 
 # Define year
-hfi.years <- c(2010, 2021)
-
-# Initialize arcpy
-py_discover_config() # We need version 3.9
-py_config() # Double check it is version 3.9
+hfi.years <- c(2010, 2022)
 
 # Set python 
 use_python(python = "C:/Users/ballen/AppData/Local/r-miniconda/envs/r-reticulate/python.exe")
@@ -75,6 +71,7 @@ for (year in hfi.years) {
   arcpy$Copy_management(in_data =  paste0(getwd(), "/results/gis/InteriorHabitat_", year, ".gdb/IntHab_500"), 
                         out_data = "interior_habitat")
   
+  print(year)
   
 }
   
