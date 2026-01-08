@@ -1,15 +1,14 @@
-#
-# Title: Data cleaning functions
-# Created: November 14th, 2023
-# Last Updated: May 15th, 2025
-# Author: Brandon Allen
-# Objectives: Functions required for cleaning the layers required for interior native habitat
-# Keywords: Footprint cleaning, Footprint standardization, Interior habitat
-#
-
-#############################
-# Footprint standardization # 
-#############################~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+#' Footprint standardization
+#'
+#' @description This function is used to standardize the harvest areas across all HFI products
+#'
+#' @param hfi.inventory Lookup table of file paths for relevant HFI
+#' @param hfi.year Year of HFI 
+#' @param arcpy Arcpy object defined using reticulate
+#'
+#' @export
+#'
+#'
 
 footprint_standardization <- function(hfi.inventory, hfi.year, arcpy) {
         
@@ -17,11 +16,11 @@ footprint_standardization <- function(hfi.inventory, hfi.year, arcpy) {
         if(hfi.year %in% c(2022, 2023)) {
                 
                 # Define the geodatabase for storing results
-                arcpy$CreateFileGDB_management(out_folder_path = paste0(getwd(), "/data/processed/hfi/"), 
+                arcpy$CreateFileGDB_management(out_folder_path = paste0(getwd(), "/2_pipeline/"), 
                                                out_name = paste0("hfi_", hfi.year, ".gdb"))
                 
                 # Define workspace
-                arcpy$env$workspace <-paste0(getwd(), "/data/processed/hfi/hfi_", hfi.year, ".gdb")
+                arcpy$env$workspace <-paste0(getwd(), "/2_pipeline/hfi_", hfi.year, ".gdb")
                 
                 # Select the harvest area polygons from the layer of interest
                 arcpy$Copy_management(in_data = hfi.inventory[hfi.inventory$HFI == hfi.year, "Path"], 
@@ -54,11 +53,11 @@ footprint_standardization <- function(hfi.inventory, hfi.year, arcpy) {
                 # Otherwise perform the standardization
                 
                 # Define the geodatabase for storing results
-                arcpy$CreateFileGDB_management(out_folder_path = paste0(getwd(), "/data/processed/hfi/"), 
+                arcpy$CreateFileGDB_management(out_folder_path = paste0(getwd(), "/2_pipeline/"), 
                                                out_name = paste0("hfi_", hfi.year, ".gdb"))
                 
                 # Define workspace
-                arcpy$env$workspace <-paste0(getwd(), "/data/processed/hfi/hfi_", hfi.year, ".gdb")
+                arcpy$env$workspace <-paste0(getwd(), "/2_pipeline/hfi_", hfi.year, ".gdb")
                 
                 # Select the potential harvest area polygons from the layer of interest
                 arcpy$Select_analysis(in_features = hfi.inventory[hfi.inventory$HFI == hfi.year, "Path"], 
@@ -144,23 +143,34 @@ footprint_standardization <- function(hfi.inventory, hfi.year, arcpy) {
         
 }
 
-######################
-# Footprint cleaning # 
-######################~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+#' Footprint cleaning
+#'
+#' @description This function is used to standardize the harvest areas across all HFI products
+#'
+#' @param nts.tile nts tile used for batch processing
+#' @param nts.path path to the nts tile boundaries
+#' @param hfi.year Year of HFI 
+#' @param hfi.path Path to the standardized HFI produced from the footprint_standardization function
+#' @param footprint.buffers Lookup table containing all of the buffer distances for each footprint type
+#' @param arcpy Arcpy object defined using reticulate
+#'
+#' @export
+#'
+#'
 
-footprint_cleaning <- function(nts.tile, hfi.year, hfi.path, footprint.buffers, arcpy) {
+footprint_cleaning <- function(nts.tile, nts.path, hfi.year, hfi.path, footprint.buffers, arcpy) {
   
   ######################
   # Create geodatabase #
   ######################
-  arcpy$CreateFileGDB_management(out_folder_path = paste0(getwd(), "/data/processed/", hfi.year), 
+  arcpy$CreateFileGDB_management(out_folder_path = paste0(getwd(), "/2_pipeline/", hfi.year), 
                                  out_name = paste0("InteriorHabitat_", nts.tile, ".gdb"))
   
   # Define workspace
-  arcpy$env$workspace <- paste0(getwd(), "/data/processed/", hfi.year, "/InteriorHabitat_", nts.tile, ".gdb")
+  arcpy$env$workspace <- paste0(getwd(), "/2_pipeline/", hfi.year, "/InteriorHabitat_", nts.tile, ".gdb")
   
   # Select the NTS tile
-  arcpy$Select_analysis(in_features = paste0(getwd(), "/data/base/boundaries/nts_snrc_250k_AB.shp"), 
+  arcpy$Select_analysis(in_features = paste0(getwd(), "/", nts.path), 
                         out_feature_class = paste0("boundary_", nts.tile), 
                         where_clause = paste0("NTS_SNRC = '", nts.tile, "'"))
   
@@ -248,14 +258,23 @@ footprint_cleaning <- function(nts.tile, hfi.year, hfi.path, footprint.buffers, 
   
 }
 
-####################
-# Interior buffers # 
-####################~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+#' Interior Buffers
+#'
+#' @description This function is used to calculate the final buffers used to identify interior habitat
+#'
+#' @param nts.tile nts tile used for batch processing
+#' @param hfi.year Year of HFI 
+#' @param hfi.path Path to the standardized HFI produced from the footprint_standardization function
+#' @param arcpy Arcpy object defined using reticulate
+#'
+#' @export
+#'
+#'
 
 interior_buffers <- function(nts.tile, hfi.year, hfi.path, arcpy) {
   
   # Define workspace
-  arcpy$env$workspace <- paste0(getwd(), "/data/processed/", hfi.year, "/InteriorHabitat_", nts.tile, ".gdb")
+  arcpy$env$workspace <- paste0(getwd(), "/2_pipeline/", hfi.year, "/InteriorHabitat_", nts.tile, ".gdb")
   
   # Create the three buffers
   arcpy$PairwiseBuffer_analysis(in_features = paste0("NoOldHarvest_", nts.tile), 

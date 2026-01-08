@@ -2,9 +2,10 @@
 # title: "Custom Reporting for focal regions"
 # author: "Brandon Allen"
 # created: "2025-02-03"
-# inputs: ["";
-#          ""]
-# outputs: [""]
+# inputs: ["Focal spatial boundaries";
+#          "Backfill landcover information";
+#          "Interior Habitat layers for each year"]
+# outputs: ["beta/custom-reporting/results/interior-habtiat_results_2022.csv"]
 # notes: 
 #   "This script calculates the interior habitat indicator for user defined regions"
 #   " Current regions include AlPac and COSIA (OSR) boundaries."
@@ -41,7 +42,7 @@ ver.id <- "V7.0"
 
 # 1.3 Initialize arcpy ----
 # Set python 
-use_python(python = "C:/Users/ballen/AppData/Local/r-miniconda/envs/r-reticulate/python.exe")
+use_python(python = "C:/Program Files/ArcGIS/Pro/bin/Python/envs/arcgispro-py3/python.exe")
 
 # Load arcpy
 arcpy <- import('arcpy') 
