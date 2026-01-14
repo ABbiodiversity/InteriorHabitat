@@ -20,11 +20,11 @@ Alberta Environment and Protected Areas, in partnership with the Alberta Biodive
 We calculate Interior Native Habitat using three buffer distances:
 - 50m buffer that is weighted based on the feature type, width for linear features, and age of harvest area.
 - 200m buffer that is weighted based on the feature type, width for linear features, and age of harvest area. This is the buffer distance used in the indicator presented on [GeoDiscover Alberta](https://open.alberta.ca/publications/interior-habitat-indicator-for-alberta)
-- 500m buffer that is not weighted based on the feature type of age of harvest area.
+- 500m buffer that is not weighted based on the feature type or age of harvest area.
 
 ## Repository Contents
 
-This repository contains the R code (**1_code/**) required for generating the three buffer distances. . 
+This repository contains the R code (**1_code/**) required for generating the three buffer distances.
 
 ## Acknowledgements
 
