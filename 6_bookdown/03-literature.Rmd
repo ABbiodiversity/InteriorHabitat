@@ -47,6 +47,7 @@ Millennium Ecosystem Assessment. 2005. Ecosystems and human well-being: biodiver
 Murcia, C. 1995. Edge effects in fragmented forests: implications for conservation. Trends in Ecology and Evolution, 10(2), 58–62. https://doi.org/10.1016/S0169-5347(00)88977-6 
 
 Noss, R.F. 1990. Indicators for monitoring biodiversity: a hierarchical approach. Conservation Biology, 4(4), 355–364. https://doi.org/10.1111/j.1523-1739.1990.tb00309.x 
+
 Robbins, C., Dawson, D., and Dowell, B. 1989. Habitat area requirements of breeding forest birds of the middle Atlantic states. Wildlife Monographs, 103, 3–34.
 
 Sanderson, E.W., Jaiteh, M., Levy, M.A., Redford, K.H., Wannebo, A.V., and Woolmer, G. 2002. The human footprint and the last of the wild. BioScience, 52(10), 891–904. https://doi.org/10.1641/0006-3568(2002)052[0891:THFATL]2.0.CO;2 
@@ -60,6 +61,7 @@ Song, S.J. 2002. Ecological basis for stand management: a synthesis of ecologica
 Stern, E., Riva, F., and Nielsen, S. 2018. Effects of narrow linear disturbances on light and wind patterns in fragmented boreal forests in northeastern Alberta. Forests, 9(8), 486. https://doi.org/10.3390/f9080486 
 
 Strelke, W.K., and Dickson, J.G. 1980. Effect of forest clear-cut edge on breeding birds in east Texas. The Journal of Wildlife Management, 44(3), 559–567. https://doi.org/10.2307/3808003 
+
 Vitousek, P.M., Mooney, H.A., Lubchenco, J., and Melillo, J.M. 1997. Human domination of earth’s ecosystems. Science, 277, 494–499. 
 
 Wilcove, D.S. 1985. Nest predation in forest tracts and the decline of migratory songbirds. Ecology, 66(4), 1211–1214. https://doi.org/10.2307/1939174 
