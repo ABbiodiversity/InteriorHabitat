@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>4 Literature | Development of the Interior Habitat indicator for Alberta</title>
+  <meta name="description" content="Technical documentation describing the methodology behind the Interior Habitat indicator." />
+  <meta name="generator" content="bookdown 0.46 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="4 Literature | Development of the Interior Habitat indicator for Alberta" />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:description" content="Technical documentation describing the methodology behind the Interior Habitat indicator." />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="4 Literature | Development of the Interior Habitat indicator for Alberta" />
+  
+  <meta name="twitter:description" content="Technical documentation describing the methodology behind the Interior Habitat indicator." />
+  
+
+<meta name="author" content="Brandon Allen" />
+
+
+<meta name="date" content="2026-01-16" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="interior-habitat-indicator.html"/>
+
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Interior Habitat</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Summary</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#supporting-information"><i class="fa fa-check"></i><b>1.1</b> Supporting Information</a></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#acknowledgement"><i class="fa fa-check"></i><b>1.2</b> Acknowledgement</a></li>
+<li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#suggested-citation"><i class="fa fa-check"></i><b>1.3</b> Suggested citation</a></li>
+<li class="chapter" data-level="1.4" data-path="index.html"><a href="index.html#contact"><i class="fa fa-check"></i><b>1.4</b> Contact</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="introduction.html"><a href="introduction.html"><i class="fa fa-check"></i><b>2</b> Introduction</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="introduction.html"><a href="introduction.html#what-is-interior-habitat"><i class="fa fa-check"></i><b>2.1</b> What is Interior Habitat?</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="interior-habitat-indicator.html"><a href="interior-habitat-indicator.html"><i class="fa fa-check"></i><b>3</b> Interior Habitat Indicator</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="interior-habitat-indicator.html"><a href="interior-habitat-indicator.html#gis-layers"><i class="fa fa-check"></i><b>3.1</b> GIS Layers</a></li>
+<li class="chapter" data-level="3.2" data-path="interior-habitat-indicator.html"><a href="interior-habitat-indicator.html#buffer-distances"><i class="fa fa-check"></i><b>3.2</b> Buffer distances</a></li>
+<li class="chapter" data-level="3.3" data-path="interior-habitat-indicator.html"><a href="interior-habitat-indicator.html#reduced-buffer-distances-for-narrow-linear-footprints."><i class="fa fa-check"></i><b>3.3</b> Reduced buffer distances for narrow linear footprints.</a></li>
+<li class="chapter" data-level="3.4" data-path="interior-habitat-indicator.html"><a href="interior-habitat-indicator.html#reference-conditions"><i class="fa fa-check"></i><b>3.4</b> Reference conditions</a></li>
+<li class="chapter" data-level="3.5" data-path="interior-habitat-indicator.html"><a href="interior-habitat-indicator.html#recovery-of-forest-harvest-areas"><i class="fa fa-check"></i><b>3.5</b> Recovery of forest harvest areas</a></li>
+<li class="chapter" data-level="3.6" data-path="interior-habitat-indicator.html"><a href="interior-habitat-indicator.html#limitations-and-future-improvements"><i class="fa fa-check"></i><b>3.6</b> Limitations and Future Improvements</a></li>
+<li class="chapter" data-level="3.7" data-path="interior-habitat-indicator.html"><a href="interior-habitat-indicator.html#organizational-differences"><i class="fa fa-check"></i><b>3.7</b> Organizational differences</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="literature.html"><a href="literature.html"><i class="fa fa-check"></i><b>4</b> Literature</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/ABbiodiversity" target="blank">Published by ABMI</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Development of the Interior Habitat indicator for Alberta</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="literature" class="section level1 hasAnchor" number="4">
+<h1><span class="header-section-number">4</span> Literature<a href="literature.html#literature" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>Alberta Biodiversity Monitoring Institute. 2016. Alberta Wall-to-Wall Vegetation Layer Including “Backfilled” Vegetation in Human Footprints (Version 6). Alberta, Canada. <a href="https://www.abmi.ca/home/publications/451-500/467" class="uri">https://www.abmi.ca/home/publications/451-500/467</a>.</p>
+<p>Alberta Sustainable Resource Development. 2006. Alberta Forest Management Planning Standard. <a href="https://open.alberta.ca/publications/3491799" class="uri">https://open.alberta.ca/publications/3491799</a></p>
+<p>ABMI Human Footprint Inventory: Wall-to-Wall Human Footprint Inventory. 2018. Edmonton, AB: Alberta Biodiversity Monitoring Institute and Alberta Human Footprint Monitoring Program, March 2020.</p>
+<p>Athabasca Region First Nations. 2018. Proposed amendments to the Lower Athabasca Regional Plan. Submitted to Alberta Environment and Parks.</p>
+<p>B.C. Ministry of Forests. 1998. Biodiversity and interior habitats: the need to minimize edge effects. Extension Note No. 21; Biodiversity Management Concepts in Landscape Ecology, Ministry of Forests Research Program. <a href="https://www.for.gov.bc.ca/hfd/pubs/Docs/En/En21.pdf" class="uri">https://www.for.gov.bc.ca/hfd/pubs/Docs/En/En21.pdf</a></p>
+<p>Cadenasso, M.L., Traynor, M.M., and Pickett, S.T.A. 1997. Functional location of forest edges: gradients of multiple physical factors. Canadian Journal of Forest Research, 27, 774–782.</p>
+<p>Crooks, K.R., and Soulé, M.E. 1999. Mesopredator release and avifaunal extinctions in a fragmented system. Nature, 400(6744), 563–566.</p>
+<p>Davis, S.K. 2004. Area sensitivity in grassland passerines: effects of patch size, patch shape, and vegetation structure on bird abundance and occurence in southern Saskatchewan. The Auk, 121(4), 1130–1145. <a href="https://academic.oup.com/auk/article/121/4/1130/5562398" class="uri">https://academic.oup.com/auk/article/121/4/1130/5562398</a></p>
+<p>DeMars, C.A., Nielsen, S.E., and Edwards, M.A. 2020. Effects of linear features on resource selection and movement rates of wood bison (Bison bison athabascae). Canadian Journal of Zoology, 98(1), 21–31. <a href="https://doi.org/10.1139/cjz-2019-0013" class="uri">https://doi.org/10.1139/cjz-2019-0013</a></p>
+<p>Desserud, P., Gates, C.C., Adams, B., and Revel, R.D. 2010. Restoration of foothills rough fescue grassland following pipeline disturbance in southwestern Alberta. Journal of Environmental Management, 91(12), 2763–2770. <a href="https://doi.org/10.1016/j.jenvman.2010.08.006" class="uri">https://doi.org/10.1016/j.jenvman.2010.08.006</a></p>
+<p>Didham, R.K., and Lawton, J.H. 1999. Edge structure determines the magnitude of changes in microclimate and vegetation structure in tropical forest fragments. Biotropica, 31(1), 17–30. <a href="https://doi.org/10.1111/j.1744-7429.1999.tb00113.x" class="uri">https://doi.org/10.1111/j.1744-7429.1999.tb00113.x</a></p>
+<p>Dyer, S.J., O’Neill, J.P., Wasel, S.M., and Boutin, S. 2001. Avoidance of industrial development by woodland caribou. The Journal of Wildlife Management, 65(3), 531. <a href="https://doi.org/10.2307/3803106" class="uri">https://doi.org/10.2307/3803106</a></p>
+<p>Franklin, J.F., and Spies, T. 1991. Composition, function, and structure of old-growth Douglas-fir forests. In Wildlife and vegetation of unmanaged Douglas-fir forests. Gen. Tech. Rep. PNWGTR-285 (pp. 71–80). USDA Forest Service.</p>
+<p>Fraser, E. 2017. Non-timber assessments in Alberta forest management planning 2017. 114 p. </p>
+<p>Gascon, C., Williamson, G.B., and da Fonseca, G.A.B. 2000. Receding forest edges and vanishing reserves. Science, 288(5470), 1356–1358. <a href="https://doi.org/10.1126/science.288.5470.1356" class="uri">https://doi.org/10.1126/science.288.5470.1356</a></p>
+<p>Gelbard, J.L., and Harrison, S. 2003. Roadless habitats as refuges for native grasslands: interactions with soil, aspect, and grazing. Ecological Applications, 13(2), 404–415. <a href="https://doi.org/10.1890/1051-0761(2003)013%5B0404:RHARFN%5D2.0.CO;2" class="uri">https://doi.org/10.1890/1051-0761(2003)013[0404:RHARFN]2.0.CO;2</a></p>
+<p>Harper, K.A., Macdonald, S.E., Burton, P.J., Chen, J., Brosofske, K.D., Saunders, S.C., Euskirchen, E.S., Roberts, D., Jaiteh, M.S., and Esseen, P.A. 2005. Edge influence on forest structure and composition in fragmented landscapes. Conservation Biology, 19(3), 768–782. <a href="https://doi.org/10.1111/j.1523-1739.2005.00045.x" class="uri">https://doi.org/10.1111/j.1523-1739.2005.00045.x</a></p>
+<p>Harper, K.A., Mascarúa-López, L., Macdonald, S.E., and Drapeau, P. 2007. Interaction of edge influence from multiple edges: examples from narrow corridors. Plant Ecology, 192(1), 71–84. <a href="https://doi.org/10.1007/s11258-006-9227-z" class="uri">https://doi.org/10.1007/s11258-006-9227-z</a></p>
+<p>Huggard, D., and Kremsater, L. 2015. Recommendations for Habitat Interior and Old-Forest indicators for the Biodiversity Management Framework. Prepared for the Science Technical Committee for the Biodiversity Management Framework, 31 p.</p>
+<p>Laurance, W.F., Lovejoy, T.E., Vasconcelos, H.L., Bruna, E.M., Didham, R.K., Stouffer, P.C., Gascon, C., Bierregaard, R.O., Laurance, S.G., and Sampaio, E. 2002. Ecosystem decay of Amazonian forest fragments: a 22-year investigation. Conservation Biology, 16(3), 605–618. <a href="https://doi.org/10.1046/j.1523-1739.2002.01025.x" class="uri">https://doi.org/10.1046/j.1523-1739.2002.01025.x</a></p>
+<p>Lovejoy, T.E., Bierregaard Jr, R., Rylands, A., Malcolm, J., Quintela, C., Harper, L., Brown Jr, K., Powell, A., Powell, G., Schubart, H., and others. 1986. Edge and other effects of isolation on Amazon forest fragments. In Conservation biology: The science of scarcity and diversity (pp. 257–285).</p>
+<p>Millennium Ecosystem Assessment. 2005. Ecosystems and human well-being: biodiversity synthesis. World Resources Institute, 86 p.</p>
+<p>Murcia, C. 1995. Edge effects in fragmented forests: implications for conservation. Trends in Ecology and Evolution, 10(2), 58–62. <a href="https://doi.org/10.1016/S0169-5347(00)88977-6" class="uri">https://doi.org/10.1016/S0169-5347(00)88977-6</a></p>
+<p>Noss, R.F. 1990. Indicators for monitoring biodiversity: a hierarchical approach. Conservation Biology, 4(4), 355–364. <a href="https://doi.org/10.1111/j.1523-1739.1990.tb00309.x" class="uri">https://doi.org/10.1111/j.1523-1739.1990.tb00309.x</a></p>
+<p>Robbins, C., Dawson, D., and Dowell, B. 1989. Habitat area requirements of breeding forest birds of the middle Atlantic states. Wildlife Monographs, 103, 3–34.</p>
+<p>Sanderson, E.W., Jaiteh, M., Levy, M.A., Redford, K.H., Wannebo, A.V., and Woolmer, G. 2002. The human footprint and the last of the wild. BioScience, 52(10), 891–904. <a href="https://doi.org/10.1641/0006-3568(2002)052%5B0891:THFATL%5D2.0.CO;2" class="uri">https://doi.org/10.1641/0006-3568(2002)052[0891:THFATL]2.0.CO;2</a></p>
+<p>Secretariat of the Convention on Biological Diversity. 2020. Global biodiversity outlook 5. United Nations Environment Programme, 211 p. <a href="https://www.cbd.int/gbo/gbo5/publication/gbo-5-en.pdf" class="uri">https://www.cbd.int/gbo/gbo5/publication/gbo-5-en.pdf</a></p>
+<p>Sliwinski, M., and Koper, N. 2012. Grassland bird responses to three edge types in a fragmented mixed-grass prairie. Avian Conservation and Ecology, 7(2), 6. <a href="https://doi.org/10.5751/ACE-00534-070206" class="uri">https://doi.org/10.5751/ACE-00534-070206</a></p>
+<p>Song, S.J. 2002. Ecological basis for stand management: a synthesis of ecological responses to wildfire and harvesting. Alberta Research Council, Vegreville, Alberta, Canada.</p>
+<p>Stern, E., Riva, F., and Nielsen, S. 2018. Effects of narrow linear disturbances on light and wind patterns in fragmented boreal forests in northeastern Alberta. Forests, 9(8), 486. <a href="https://doi.org/10.3390/f9080486" class="uri">https://doi.org/10.3390/f9080486</a></p>
+<p>Strelke, W.K., and Dickson, J.G. 1980. Effect of forest clear-cut edge on breeding birds in east Texas. The Journal of Wildlife Management, 44(3), 559–567. <a href="https://doi.org/10.2307/3808003" class="uri">https://doi.org/10.2307/3808003</a></p>
+<p>Vitousek, P.M., Mooney, H.A., Lubchenco, J., and Melillo, J.M. 1997. Human domination of earth’s ecosystems. Science, 277, 494–499.</p>
+<p>Wilcove, D.S. 1985. Nest predation in forest tracts and the decline of migratory songbirds. Ecology, 66(4), 1211–1214. <a href="https://doi.org/10.2307/1939174" class="uri">https://doi.org/10.2307/1939174</a></p>
+<p>Williams-Linera, G., Dominguez-Gastelu, V., and Garcia-Zurita, M.E. 1998. Microenvironment and floristics of different edges in a fragmented tropical rainforest. Conservation Biology, 12(5), 1091–1102. <a href="https://doi.org/10.1046/j.1523-1739.1998.97262.x" class="uri">https://doi.org/10.1046/j.1523-1739.1998.97262.x</a></p>
+
+<div id="refs" class="references csl-bib-body hanging-indent">
+<div class="csl-entry">
+Assessment, Millennium Ecosystem. 2005. <span>“<a href="">Ecosystems and Human Well-Being: Biodiversity Synthesis</a>.”</span>
+</div>
+<div class="csl-entry">
+Cadenasso, Traynor, M. L., and S. T. A Pickett. 1997. <span>“<a href="">Functional Location of Forest Edges: Gradients of Multiple Physical Factors</a>.”</span> <em>Canadian Journal of Forest Research</em> 27: 774–82.
+</div>
+<div class="csl-entry">
+Convention on Biological Diversity, Secretariat of the. 2020. <span>“<a href="">Global Biodiversity Outlook 5</a>”</span> 52: 891.
+</div>
+<div class="csl-entry">
+Crooks, K. R., and M. E Soulé. 1999. <span>“<a href="">Mesopredator Release and Avifaunal Extinctions in a Fragmented System</a>.”</span> <em>Nature</em>, 563–66.
+</div>
+<div class="csl-entry">
+Davis, S. K. 2004. <span>“Area Sensitivity in Grassland Passerines: Effects of Patch Size, Patch Shape, and Vegetation Structure on Bird Abundance and Occurence in Southern Saskatchewan.”</span> <em>The Auk</em> 121: 1130–45. <a href="https://academic.oup.com/auk/article/121/4/1130/5562398 ">https://academic.oup.com/auk/article/121/4/1130/5562398 </a>.
+</div>
+<div class="csl-entry">
+DeMars, Nielsen, C. A., and M. A Edwards. 2020. <span>“Effects of Linear Features on Resource Selection and Movement Rates of Wood Bison (Bison Bison Athabascae).”</span> <em>Canadian Journal of Zoology</em>. <a href="https://doi.org/10.1139/cjz-2019-0013 ">https://doi.org/10.1139/cjz-2019-0013 </a>.
+</div>
+<div class="csl-entry">
+Desserud, Gates, P., and R. D Revel. 2010. <span>“Restoration of Foothills Rough Fescue Grassland Following Pipeline Disturbance in Southwestern Alberta.”</span> <em>Journal of Environmental Management</em>. <a href="https://doi.org/10.1016/j.jenvman.2010.08.006">https://doi.org/10.1016/j.jenvman.2010.08.006</a>.
+</div>
+<div class="csl-entry">
+Development, Alberta Sustainable Resource. 2006. <span>“Alberta Forest Management Planning Standard.”</span> <a href="https://open.alberta.ca/publications/3491799">https://open.alberta.ca/publications/3491799</a>.
+</div>
+<div class="csl-entry">
+Didham, R. K., and J. H Lawton. 1999. <span>“Edge Structure Determines the Magnitude of Changes in Microclimate and Vegetation Structure in Tropical Forest Fragments.”</span> <em>Biotropica</em>. <a href="https://doi.org/10.1111/j.1744-7429.1999.tb00113.x">https://doi.org/10.1111/j.1744-7429.1999.tb00113.x</a>.
+</div>
+<div class="csl-entry">
+Dyer, O’Neill, S. J., and S Boutin. 2001. <span>“Avoidance of Industrial Development by Woodland Caribou.”</span> <em>The Journal of Wildlife Management</em>. <a href="https://doi.org/10.2307/3803106">https://doi.org/10.2307/3803106</a>.
+</div>
+<div class="csl-entry">
+Forests, B. C. Ministry of. 1998. <span>“Biodiversity and Interior Habitats: The Need to Minimize Edge Effects. Extension Note No. 21; Biodiversity Management Concepts in Landscape Ecology, Ministry of Forests Research Program.”</span> <a href="https://www.for.gov.bc.ca/hfd/pubs/Docs/En/En21.pdf ">https://www.for.gov.bc.ca/hfd/pubs/Docs/En/En21.pdf </a>.
+</div>
+<div class="csl-entry">
+Franklin, Filicetti, C. M. A., and S. E Nielsen. 2021. <span>“Seismic Line Width and Orientation Influence Microclimatic Forest Edge Gradients and Tree Regeneration.”</span> <a href="https://doi.org/10.1016/j.foreco.2021.119216">https://doi.org/10.1016/j.foreco.2021.119216</a>.
+</div>
+<div class="csl-entry">
+Franklin, J. F., and T Spies. 1991. <span>“<a href="">Composition, Function, and Structure of Old-Growth Douglas-Fir Forests. In Wildlife and Vegetation of Unmanaged Douglas-Fir Forests</a>,”</span> 71–80.
+</div>
+<div class="csl-entry">
+Fraser, E. 2017. <span>“<a href="">Non-Timber Assessments in Alberta Forest Management Planning 2017</a>.”</span>
+</div>
+<div class="csl-entry">
+Gascon, Williamson, C., and G. A. B da Fonseca. 2000. <span>“Receding Forest Edges and Vanishing Reserves.”</span> <em>Science</em>, 1356–58. <a href="https://doi.org/10.1126/science.288.5470.1356">https://doi.org/10.1126/science.288.5470.1356</a>.
+</div>
+<div class="csl-entry">
+Gelbard, J. L., and S Harrison. 2003. <span>“Roadless Habitats as Refuges for Native Grasslands: Interactions with Soil, Aspect, and Grazing.”</span> <em>Ecological Applications</em>, 404–15. <a href="https://doi.org/10.1890/1051-0761(2003)013[0404:RHARFN]2.0.CO;2">https://doi.org/10.1890/1051-0761(2003)013[0404:RHARFN]2.0.CO;2</a>.
+</div>
+<div class="csl-entry">
+Harper, Macdonald, K. A., and P. A Esseen. 2005. <span>“Edge Influence on Forest Structure and Composition in Fragmented Landscapes.”</span> <em>Conservation Biology</em>. <a href="https://doi.org/10.1111/j.1523-1739.2005.00045.x">https://doi.org/10.1111/j.1523-1739.2005.00045.x</a>.
+</div>
+<div class="csl-entry">
+Harper, Mascarúa-López, K. A., and P Drapeau. 2007. <span>“Interaction of Edge Influence from Multiple Edges: Examples from Narrow Corridors.”</span> <em>Plant Ecology</em>. <a href="https://doi.org/10.1007/s11258-006-9227-z">https://doi.org/10.1007/s11258-006-9227-z</a>.
+</div>
+<div class="csl-entry">
+Huggard, D, and L Kremsater. 2015. <span>“<a href="">Recommendations for Habitat Interior and Old-Forest Indicators for the Biodiversity Management Framework</a>.”</span>
+</div>
+<div class="csl-entry">
+Laurance, Lovejoy, W. F., and E Sampaio. 2002. <span>“Ecosystem Decay of Amazonian Forest Fragments: A 22-Year Investigation.”</span> <em>Conservation Biology</em>, 605–18. <a href="https://doi.org/10.1046/j.1523-1739.2002.01025.x">https://doi.org/10.1046/j.1523-1739.2002.01025.x</a>.
+</div>
+<div class="csl-entry">
+Lovejoy, Bierregaard Jr, T. E. et al. 1986. <span>“<a href="">Edge and Other Effects of Isolation on Amazon Forest Fragments. In Conservation Biology: The Science of Scarcity and Diversity</a>.”</span>
+</div>
+<div class="csl-entry">
+Murcia, C. 1995. <span>“Edge Effects in Fragmented Forests: Implications for Conservation.”</span> <em>Trends in Ecology and Evolution</em>, 58–62. <a href="https://doi.org/10.1016/S0169-5347(00)88977-6 ">https://doi.org/10.1016/S0169-5347(00)88977-6 </a>.
+</div>
+<div class="csl-entry">
+Nations, Athabasca Region First. 2018. <span>“<a href="">Proposed Amendments to the Lower Athabasca Regional Plan. Submitted to Alberta Environment and Parks</a>.”</span>
+</div>
+<div class="csl-entry">
+Noss, R. F. 1990. <span>“Indicators for Monitoring Biodiversity: A Hierarchical Approach.”</span> <em>Conservation Biology</em>, 355–64. <a href="https://doi.org/10.1111/j.1523-1739.1990.tb00309.x">https://doi.org/10.1111/j.1523-1739.1990.tb00309.x</a>.
+</div>
+<div class="csl-entry">
+Robbins, Dawson, C., and B Dowell. 1989. <span>“<a href="">Habitat Area Requirements of Breeding Forest Birds of the Middle Atlantic States</a>.”</span> <em>Wildlife Monographs</em>, 3–34.
+</div>
+<div class="csl-entry">
+Sanderson, Jaiteh, E. W., and G Woolmer. 2002. <span>“The Human Footprint and the Last of the Wild.”</span> <em>BioScience</em>, 891–904. <a href="https://doi.org/10.1641/0006-3568(2002)052[0891:THFATL]2.0.CO;2 ">https://doi.org/10.1641/0006-3568(2002)052[0891:THFATL]2.0.CO;2 </a>.
+</div>
+<div class="csl-entry">
+Sliwinski, M., and N Koper. 2012. <span>“Grassland Bird Responses to Three Edge Types in a Fragmented Mixed-Grass Prairie.”</span> <em>Avian Conservation and Ecology</em>. <a href="https://doi.org/10.5751/ACE-00534-070206 ">https://doi.org/10.5751/ACE-00534-070206 </a>.
+</div>
+<div class="csl-entry">
+Song, S. J. 2002. <span>“<a href="">Ecological Basis for Stand Management: A Synthesis of Ecological Responses to Wildfire and Harvesting</a>.”</span>
+</div>
+<div class="csl-entry">
+Stern, Riva, E., and S Nielsen. 2018. <span>“Effects of Narrow Linear Disturbances on Light and Wind Patterns in Fragmented Boreal Forests in Northeastern Alberta.”</span> <em>Forests</em>. <a href="https://doi.org/10.3390/f9080486 ">https://doi.org/10.3390/f9080486 </a>.
+</div>
+<div class="csl-entry">
+Strelke, W. K., and J. G Dickson. 1980. <span>“Effect of Forest Clear-Cut Edge on Breeding Birds in East Texas.”</span> <em>The Journal of Wildlife Management</em>. <a href="https://doi.org/10.2307/3808003 86">https://doi.org/10.2307/3808003 86</a>.
+</div>
+<div class="csl-entry">
+Vitousek, Mooney, P. M., and J. M Melillo. 1997. <span>“<a href="">Human Domination of Earth’s Ecosystems</a>.”</span> <em>Science</em>, 494–99.
+</div>
+<div class="csl-entry">
+Wilcove, D. S. 1985. <span>“Nest Predation in Forest Tracts and the Decline of Migratory Songbirds.”</span> <em>Ecology</em>, 1211–14. <a href="https://doi.org/10.2307/1939174">https://doi.org/10.2307/1939174</a>.
+</div>
+<div class="csl-entry">
+Williams-Linera, Dominguez-Gastelu, G., and M. E Garcia-Zurita. 1998. <span>“Microenvironment and Floristics of Different Edges in a Fragmented Tropical Rainforest.”</span> <em>Conservation Biology</em>, 1091–1102. <a href="https://doi.org/10.1046/j.1523-1739.1998.97262.x ">https://doi.org/10.1046/j.1523-1739.1998.97262.x </a>.
+</div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="interior-habitat-indicator.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+  "sharing": {
+    "github": false,
+    "facebook": true,
+    "twitter": true,
+    "linkedin": false,
+    "weibo": false,
+    "instapaper": false,
+    "vk": false,
+    "whatsapp": false,
+    "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+  },
+  "fontsettings": {
+    "theme": "white",
+    "family": "sans",
+    "size": 2
+  },
+  "edit": {
+    "link": null,
+    "text": null
+  },
+  "history": {
+    "link": null,
+    "text": null
+  },
+  "view": {
+    "link": null,
+    "text": null
+  },
+  "download": null,
+  "search": {
+    "engine": "fuse",
+    "options": null
+  },
+  "toc": {
+    "collapse": "subsection"
+  }
+});
+});
+</script>
+
+</body>
+
+</html>

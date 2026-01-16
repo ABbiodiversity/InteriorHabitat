@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>3 Interior Habitat Indicator | Development of the Interior Habitat indicator for Alberta</title>
+  <meta name="description" content="Technical documentation describing the methodology behind the Interior Habitat indicator." />
+  <meta name="generator" content="bookdown 0.46 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="3 Interior Habitat Indicator | Development of the Interior Habitat indicator for Alberta" />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:description" content="Technical documentation describing the methodology behind the Interior Habitat indicator." />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="3 Interior Habitat Indicator | Development of the Interior Habitat indicator for Alberta" />
+  
+  <meta name="twitter:description" content="Technical documentation describing the methodology behind the Interior Habitat indicator." />
+  
+
+<meta name="author" content="Brandon Allen" />
+
+
+<meta name="date" content="2026-01-16" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="introduction.html"/>
+<link rel="next" href="literature.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Interior Habitat</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Summary</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#supporting-information"><i class="fa fa-check"></i><b>1.1</b> Supporting Information</a></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#acknowledgement"><i class="fa fa-check"></i><b>1.2</b> Acknowledgement</a></li>
+<li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#suggested-citation"><i class="fa fa-check"></i><b>1.3</b> Suggested citation</a></li>
+<li class="chapter" data-level="1.4" data-path="index.html"><a href="index.html#contact"><i class="fa fa-check"></i><b>1.4</b> Contact</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="introduction.html"><a href="introduction.html"><i class="fa fa-check"></i><b>2</b> Introduction</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="introduction.html"><a href="introduction.html#what-is-interior-habitat"><i class="fa fa-check"></i><b>2.1</b> What is Interior Habitat?</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="interior-habitat-indicator.html"><a href="interior-habitat-indicator.html"><i class="fa fa-check"></i><b>3</b> Interior Habitat Indicator</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="interior-habitat-indicator.html"><a href="interior-habitat-indicator.html#gis-layers"><i class="fa fa-check"></i><b>3.1</b> GIS Layers</a></li>
+<li class="chapter" data-level="3.2" data-path="interior-habitat-indicator.html"><a href="interior-habitat-indicator.html#buffer-distances"><i class="fa fa-check"></i><b>3.2</b> Buffer distances</a></li>
+<li class="chapter" data-level="3.3" data-path="interior-habitat-indicator.html"><a href="interior-habitat-indicator.html#reduced-buffer-distances-for-narrow-linear-footprints."><i class="fa fa-check"></i><b>3.3</b> Reduced buffer distances for narrow linear footprints.</a></li>
+<li class="chapter" data-level="3.4" data-path="interior-habitat-indicator.html"><a href="interior-habitat-indicator.html#reference-conditions"><i class="fa fa-check"></i><b>3.4</b> Reference conditions</a></li>
+<li class="chapter" data-level="3.5" data-path="interior-habitat-indicator.html"><a href="interior-habitat-indicator.html#recovery-of-forest-harvest-areas"><i class="fa fa-check"></i><b>3.5</b> Recovery of forest harvest areas</a></li>
+<li class="chapter" data-level="3.6" data-path="interior-habitat-indicator.html"><a href="interior-habitat-indicator.html#limitations-and-future-improvements"><i class="fa fa-check"></i><b>3.6</b> Limitations and Future Improvements</a></li>
+<li class="chapter" data-level="3.7" data-path="interior-habitat-indicator.html"><a href="interior-habitat-indicator.html#organizational-differences"><i class="fa fa-check"></i><b>3.7</b> Organizational differences</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="literature.html"><a href="literature.html"><i class="fa fa-check"></i><b>4</b> Literature</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/ABbiodiversity" target="blank">Published by ABMI</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Development of the Interior Habitat indicator for Alberta</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="interior-habitat-indicator" class="section level1 hasAnchor" number="3">
+<h1><span class="header-section-number">3</span> Interior Habitat Indicator<a href="interior-habitat-indicator.html#interior-habitat-indicator" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="gis-layers" class="section level2 hasAnchor" number="3.1">
+<h2><span class="header-section-number">3.1</span> GIS Layers<a href="interior-habitat-indicator.html#gis-layers" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>The following GIS layers were used to delineate native habitat:</p>
+<ol style="list-style-type: decimal">
+<li><p><strong>The Human Footprint Inventory</strong> is a provincial scale <a href="https://www.abmi.ca/home/data-analytics/da-top/da-product-overview/Human-Footprint-Products/HF-inventory.html">GIS layer</a> that consolidates 115 types of anthropogenic disturbance into 20 subcategories. This layer allowed us to determine the loss of native habitat due to anthropogenic disturbance.</p></li>
+<li><p><strong>Hierarchical Watershed Boundaries of Alberta</strong> The Hydrologic Unit Code Watersheds of Alberta layer allows us to aggregate the status of AWNC and TNC based on ecologically relevant boundaries (<a href="https://open.alberta.ca/opendata/gda-7857b6fb-96c5-4bc5-ac3a-9017778fd183">Hydrologic Unit Code Watersheds of Alberta</a>). We chose to aggregate the information at the HUC-8 watershed scale. Each HUC-8 watershed contains both AWNC and TNC, with TNC ranging between 3.5% to 94% across watersheds. However, these indicators can be reported at alternative spatial scales.</p></li>
+<li><p><strong>ABMI Wall-to-Wall Vegetation Layer Including “Backfilled” Vegetation</strong> is a provincial scale <a href="https://abmi.ca/home/publications/451-500/467">GIS layer</a> that tracks the current vegetation, habitat, soil, and anthropogenic disturbances. This layer allowed us to understand how interior habitat for different habitat types has been impacted over time. This information is used by the ABMI to provide additional context in our reporting products and is not officially a part of official indicator.</p></li>
+</ol>
+</div>
+<div id="buffer-distances" class="section level2 hasAnchor" number="3.2">
+<h2><span class="header-section-number">3.2</span> Buffer distances<a href="interior-habitat-indicator.html#buffer-distances" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>The Interior Habitat metric is designed to be more sensitive to human footprint expansion rather than footprint intensification. In a heavily disturbed area, the habitat quality may not be high, and a wider buffer is less sensitive to additional footprints (footprint intensification). On the other hand, the metric is more sensitive to new footprints in less disturbed areas, which may allow the indicator to be more responsive to changes in high quality habitat. Indicator condition will decline with the addition of new footprint (aside from new footprint that falls wholly within a buffer). Smaller single buffers (e.g., 50 m) do not adequately capture the extent of effects on large vertebrates, many of which are of cultural interest. A larger buffer is aligned with interests expressed by the Athabasca Region First Nations to better account for sensory disturbances associated with human footprints <span class="citation">Nations (<a href="#ref-ARFN2018">2018</a>)</span>.</p>
+<p>For the indicator adopted by Alberta Environment and Protected Areas, they use a 200m buffer and the forumlas for reducing buffer distances for narrow linear footprints and harvest recovery. The ABMI also reports on a 50m buffer, using the same reduced buffer and recovery formulas, and a flat 500m buffer to provide additional context in our public reporting.</p>
+</div>
+<div id="reduced-buffer-distances-for-narrow-linear-footprints." class="section level2 hasAnchor" number="3.3">
+<h2><span class="header-section-number">3.3</span> Reduced buffer distances for narrow linear footprints.<a href="interior-habitat-indicator.html#reduced-buffer-distances-for-narrow-linear-footprints." class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Linear features such as roads, pipelines and seismic lines are a prominent type of human footprint in Alberta. They have been shown to have a wide range of effects including influencing wildlife movement rates and directions, facilitating dispersal, contributing to range expansion, and changing prey-predator dynamics <span class="citation">DeMars and Edwards (<a href="#ref-DeMars2020">2020</a>)</span>. Some studies <span class="citation">(<a href="#ref-Stern2018">Stern and Nielsen 2018</a>; <a href="#ref-Franklin2021">F. Franklin C. M. A. and Nielsen 2021</a>)</span> lessened edge effects around narrow linear disturbances. The reduced edge effects for narrow linear footprints are supported by physical mechanisms such as wind and light penetration into adjacent forests <span class="citation">Huggard and Kremsater (<a href="#ref-Huggard2015">2015</a>)</span>. Narrow linear footprints are defined as those less than 20-m wide <span class="citation">Huggard and Kremsater (<a href="#ref-Huggard2015">2015</a>)</span>, and generally include seismic lines (conventional/pre-low impact [6 m] and low impact [3 m] seismic lines), truck trails [6 m] and recreational trails that are detected in the HFIs (typically motorized ATV trails). These features typically do not incorporate surface construction (e.g., construction of subgrade bed, gravel fill) and are expected to have reduced edge effects. One lane gravel roads and truck trails are likely to be assigned reduced buffers. Engineered surfaces, on the other hand, are expected to have greater edge effects than seismic lines, recreational trails and truck trails, and would not receive reduced buffers. The majority of engineered road features, when including the verge, are wider than 20 m.</p>
+<p>The width of a footprint feature is used as a proxy for identifying footprint features in the HFIs that are likely to have less impact. The 20 m threshold is based on a rough estimate of average tree height for the boreal forests, including younger stands. Reduced buffer width (RBW) for a narrow linear footprint is calculated as a function of the full buffer width (200 m) and footprint width (FW) <span class="citation">Huggard and Kremsater (<a href="#ref-Huggard2015">2015</a>)</span>:</p>
+<p>RBW = 200 X (0.25 + 0.75 * /20)</p>
+<p>Equation (1) discounts the full buffer width by a factor that decreases from 1 when FW = 20 m to 0.25 when FW = 0 m, and sets a minimum buffer width of 50 m, a quarter of the full buffer width. The constant of 0.25 is to recognize edge effects from mechanisms like access, snag-falling or hydrological disruption that may not be reduced in narrow features.</p>
+</div>
+<div id="reference-conditions" class="section level2 hasAnchor" number="3.4">
+<h2><span class="header-section-number">3.4</span> Reference conditions<a href="interior-habitat-indicator.html#reference-conditions" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>The Interior Habitat indicator metric is expressed as a percentage of reference state. Reference state reflects the absence of human footprint, generally corresponding to a historical period prior to European settlement and extensive agricultural conversion. Identifying a reference state provides context to aid interpretation of the indicator condition, and is not intended to indicate a desire to return to a landscape without human footprint. It is recognized that Indigenous peoples actively managed landscapes prior to European settlement. However, for the purpose of this indicator, the reference state is a static layer and does not reflect the range of conditions which may have existed prior to European settlement. For the Interior Habitat indicator, reference state is the total area of interest. The Interior Habitat indicator value is simply the ratio of the area of interior habitat over the total area of interest. As the indicator is focused on anthropogenic edges, in the absence of human footprint the entire area would be considered interior habitat.</p>
+</div>
+<div id="recovery-of-forest-harvest-areas" class="section level2 hasAnchor" number="3.5">
+<h2><span class="header-section-number">3.5</span> Recovery of forest harvest areas<a href="interior-habitat-indicator.html#recovery-of-forest-harvest-areas" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>The recovery approach for forest harvest areas has two components: the buffer around a harvest area that captures the edge effects, and the harvest area itself. Initial buffer width is reduced linearly to zero over time from 0 to 60 years, and full recovery of the actual harvest area occurs at 80 years. Post-harvest stand age is used as a surrogate for relative tree height. As trees grow in a harvest area, the expected edge effects outside the harvest area decrease, until trees in the harvest area reach the same heights as those in the adjacent area. Harvest areas and the buffers are treated separately because it takes longer for ecological complexity to recover than tree height. The approach for recovery of buffers is aligned with the Alberta Forest Management Planning Standard <span class="citation">Development (<a href="#ref-ASRD2006">2006</a>)</span> and guidance for non-timber assessment for interior forest <span class="citation">Fraser (<a href="#ref-Fraser2017">2017</a>)</span>. The use of binary recovery for forest harvest areas at 80 years represents the shift from immature to mature forests <span class="citation">Song (<a href="#ref-Song2002">2002</a>)</span>.</p>
+</div>
+<div id="limitations-and-future-improvements" class="section level2 hasAnchor" number="3.6">
+<h2><span class="header-section-number">3.6</span> Limitations and Future Improvements<a href="interior-habitat-indicator.html#limitations-and-future-improvements" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>All indicators, as representations of a component of the environment, have limitations. A single indicator cannot
+measure all aspects of habitat quantity and quality. The Interior Habitat indicator is intended to serve as a general indicator of habitat quantity at the regional and sub-regional levels.</p>
+<p>Currently, clearcut harvest areas are the only type of footprint that is allowed to recover in the calculation of Interior Habitat. Recovery for other footprint types (e.g., seismic lines, wellpads) will not be accounted for until sufficient supporting information becomes available.</p>
+<p>Potential future improvements include:
+• incorporating recovery for other human footprint types and refining the recovery curves for forest harvest areas,
+• attributing changes in Interior Habitat to relevant reporting sectors</p>
+</div>
+<div id="organizational-differences" class="section level2 hasAnchor" number="3.7">
+<h2><span class="header-section-number">3.7</span> Organizational differences<a href="interior-habitat-indicator.html#organizational-differences" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>These methods are a simplified overview of how to calculate this indicator in the context of both ABMI and Alberta Environment and Protected Areas reporting needs. In general, the methodology for the 200 m buffer is identical between organizations <a href="https://open.alberta.ca/publications/interior-habitat-indicator-for-alberta">GeoDiscover Alberta</a>. However, ABMI does expanded reporting of this indicator using the described 50 m and 500 m buffers. In addition, ABMI also calculates interior habitat for individual habitat classes such as upland forests and wetland.</p>
+
+</div>
+</div>
+<h3>References</h3>
+<div id="refs" class="references csl-bib-body hanging-indent">
+<div id="ref-DeMars2020" class="csl-entry">
+DeMars, Nielsen, C. A., and M. A Edwards. 2020. <span>“Effects of Linear Features on Resource Selection and Movement Rates of Wood Bison (Bison Bison Athabascae).”</span> <em>Canadian Journal of Zoology</em>. <a href="https://doi.org/10.1139/cjz-2019-0013 ">https://doi.org/10.1139/cjz-2019-0013 </a>.
+</div>
+<div id="ref-ASRD2006" class="csl-entry">
+Development, Alberta Sustainable Resource. 2006. <span>“Alberta Forest Management Planning Standard.”</span> <a href="https://open.alberta.ca/publications/3491799">https://open.alberta.ca/publications/3491799</a>.
+</div>
+<div id="ref-Franklin2021" class="csl-entry">
+Franklin, Filicetti, C. M. A., and S. E Nielsen. 2021. <span>“Seismic Line Width and Orientation Influence Microclimatic Forest Edge Gradients and Tree Regeneration.”</span> <a href="https://doi.org/10.1016/j.foreco.2021.119216">https://doi.org/10.1016/j.foreco.2021.119216</a>.
+</div>
+<div id="ref-Fraser2017" class="csl-entry">
+Fraser, E. 2017. <span>“<a href="">Non-Timber Assessments in Alberta Forest Management Planning 2017</a>.”</span>
+</div>
+<div id="ref-Huggard2015" class="csl-entry">
+Huggard, D, and L Kremsater. 2015. <span>“<a href="">Recommendations for Habitat Interior and Old-Forest Indicators for the Biodiversity Management Framework</a>.”</span>
+</div>
+<div id="ref-ARFN2018" class="csl-entry">
+Nations, Athabasca Region First. 2018. <span>“<a href="">Proposed Amendments to the Lower Athabasca Regional Plan. Submitted to Alberta Environment and Parks</a>.”</span>
+</div>
+<div id="ref-Song2002" class="csl-entry">
+Song, S. J. 2002. <span>“<a href="">Ecological Basis for Stand Management: A Synthesis of Ecological Responses to Wildfire and Harvesting</a>.”</span>
+</div>
+<div id="ref-Stern2018" class="csl-entry">
+Stern, Riva, E., and S Nielsen. 2018. <span>“Effects of Narrow Linear Disturbances on Light and Wind Patterns in Fragmented Boreal Forests in Northeastern Alberta.”</span> <em>Forests</em>. <a href="https://doi.org/10.3390/f9080486 ">https://doi.org/10.3390/f9080486 </a>.
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="introduction.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="literature.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+  "sharing": {
+    "github": false,
+    "facebook": true,
+    "twitter": true,
+    "linkedin": false,
+    "weibo": false,
+    "instapaper": false,
+    "vk": false,
+    "whatsapp": false,
+    "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+  },
+  "fontsettings": {
+    "theme": "white",
+    "family": "sans",
+    "size": 2
+  },
+  "edit": {
+    "link": null,
+    "text": null
+  },
+  "history": {
+    "link": null,
+    "text": null
+  },
+  "view": {
+    "link": null,
+    "text": null
+  },
+  "download": null,
+  "search": {
+    "engine": "fuse",
+    "options": null
+  },
+  "toc": {
+    "collapse": "subsection"
+  }
+});
+});
+</script>
+
+</body>
+
+</html>
