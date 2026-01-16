@@ -24,7 +24,7 @@ We calculate Interior Native Habitat using three buffer distances:
 
 ## Repository Contents
 
-This repository contains the R code (**1_code/**) required for generating the three buffer distances.
+This repository contains the R code (**1_code/**) required for generating the three buffer distances. In addition, there is an example script for how to estimate interior habitat by individual landcover classes. This approach is used to support detailed landcover reporting that is performed by the ABMI. 
 
 ## Acknowledgements
 
