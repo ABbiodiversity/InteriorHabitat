@@ -16,11 +16,11 @@ footprint_standardization <- function(hfi.inventory, hfi.year, arcpy) {
         if(hfi.year %in% c(2022, 2023)) {
                 
                 # Define the geodatabase for storing results
-                arcpy$CreateFileGDB_management(out_folder_path = paste0(getwd(), "/2_pipeline/"), 
+                arcpy$CreateFileGDB_management(out_folder_path = paste0(getwd(), "/2_pipeline/hfi/"), 
                                                out_name = paste0("hfi_", hfi.year, ".gdb"))
                 
                 # Define workspace
-                arcpy$env$workspace <-paste0(getwd(), "/2_pipeline/hfi_", hfi.year, ".gdb")
+                arcpy$env$workspace <-paste0(getwd(), "/2_pipeline/hfi/hfi_", hfi.year, ".gdb")
                 
                 # Select the harvest area polygons from the layer of interest
                 arcpy$Copy_management(in_data = hfi.inventory[hfi.inventory$HFI == hfi.year, "Path"], 

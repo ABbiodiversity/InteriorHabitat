@@ -74,7 +74,7 @@ clusterEvalQ(core.input, {
 
 # Standardize the harvest area polygons
 # Function has a catch to just update attribute names for 2022 (HARVEST-AREA)
-hfi.series <- c(2010, 2018, 2019, 2020, 2021, 2022)
+hfi.series <- c(2010, 2018, 2019, 2020, 2021, 2022, 2023)
 parLapply(core.input, 
           as.list(hfi.series), 
           fun = function(hfi) tryCatch(footprint_standardization(hfi.inventory = hfi.paths,
@@ -93,7 +93,7 @@ foreach(hfi = hfi.series) %dopar%
             fun = function(tile) tryCatch(footprint_cleaning(nts.tile = tile, 
                                                              nts.path = "0_data/external/boundaries/nts_snrc_250k_AB.shp",
                                                              hfi.year = hfi, 
-                                                             hfi.path = paste0("2_pipeline/hfi_", hfi, ".gdb/hfi_", hfi), 
+                                                             hfi.path = paste0("2_pipeline/hfi/hfi_", hfi, ".gdb/hfi_", hfi), 
                                                              footprint.buffers = footprint.buffers, 
                                                              arcpy = arcpy), error = function(e) e)
   )
@@ -108,7 +108,7 @@ foreach(hfi = hfi.series) %dopar%
             as.list(nts.tiles), 
             fun = function(tile) tryCatch(interior_buffers(nts.tile = tile, 
                                                            hfi.year = hfi, 
-                                                           hfi.path = paste0("2_pipeline/hfi_", hfi, ".gdb/hfi_", hfi), 
+                                                           hfi.path = paste0("2_pipeline/hfi/hfi_", hfi, ".gdb/hfi_", hfi), 
                                                            arcpy = arcpy), error = function(e) e)
   )
 

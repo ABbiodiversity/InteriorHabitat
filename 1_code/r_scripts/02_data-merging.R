@@ -21,7 +21,7 @@ library(sf)
 library(raster)
 
 # Define year
-hfi.years <- c(2010, 2018, 2019, 2020, 2021, 2022)
+hfi.years <- c(2010, 2018, 2019, 2020, 2021, 2022, 2023)
 
 # Set python 
 use_python(python = "C:/Program Files/ArcGIS/Pro/bin/Python/envs/arcgispro-py3/python.exe")
