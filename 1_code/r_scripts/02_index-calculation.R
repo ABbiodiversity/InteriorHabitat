@@ -37,9 +37,6 @@ watershed_layer <- read_sf(dsn = "0_data/external/boundaries/HydrologicUnitCodeW
                            layer = "HydrologicUnitCode8WatershedsOfAlberta")
 watershed_ids <- watershed_layer$HUC_8
 
-# Define working directory
-working_directory <- paste0(getwd(), "/2_pipeline/hfi/")
-
 # 1.1 Initializing parallel processing ----
 
 # Define the cores for parallel processing
