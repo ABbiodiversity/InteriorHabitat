@@ -38,9 +38,10 @@ hfi_series <- c(2010, 2018, 2019, 2020, 2021, 2022, 2023)
 if(!dir.exists(paste0(getwd(), "/2_pipeline/hfi/"))) {
         
         dir.create(paste0(getwd(), "/2_pipeline/hfi/"))
-        working_directory <- paste0(getwd(), "/2_pipeline/hfi/")
         
 }
+
+working_directory <- paste0(getwd(), "/2_pipeline/hfi/")
 
 for (year in hfi_series) {
         
@@ -67,9 +68,9 @@ footprint_buffers <- as.data.frame(read_excel("0_data/external/lookup/footprint-
 # Define the cores for parallel processing
 n_clusters <- length(hfi_series)
 core_input <- makeCluster(n_clusters)
-clusterExport(n_clusters, c("hfi_paths", "footprint_buffers", 
+clusterExport(core_input, c("hfi_paths", "footprint_buffers", 
                             "harvest_standardization", "linear_standardization", 
-                            "footprint_cleaning"))
+                            "buffer_assignment", "working_directory"))
 clusterEvalQ(core_input, {
   
   # Load libraries
@@ -91,8 +92,6 @@ clusterEvalQ(core_input, {
 })
 
 # 2.0 Footprint Standardization ----
-# This function standardizes the harvest area attribution across years 
-
 # 2.1 Standardize the harvest area polygons ----
 # Function has a catch to just update attribute names for 2023 (HARVEST-AREA)
 parLapply(core_input, 
@@ -112,9 +111,8 @@ parLapply(core_input,
                                                               arcpy = arcpy), error = function(e) e)
 )
 
-# 3.0 Footprint Cleaning ----
-# This function cleans the human footprint layer and assigns buffer distances
-
+# 3.0 Buffer assignment ----
+# This function assigns buffer distances and clips to the focal region of interest
 # Clean the watershed tiles
 foreach(hfi = hfi_series) %dopar% 
   
@@ -128,7 +126,7 @@ foreach(hfi = hfi_series) %dopar%
                                                               arcpy = arcpy), error = function(e) e)
   )
 
-stopCluster(core.input)
+stopCluster(core_input)
 
 # Clear memory
 rm(list=ls())
