@@ -21,7 +21,7 @@ library(sf)
 library(raster)
 
 # Define year
-hfi.years <- c(2010, 2023)
+hfi_series <- c(2010, 2018, 2019, 2020, 2021, 2022, 2023)
 
 # Set python 
 use_python(python = "C:/Program Files/ArcGIS/Pro/bin/Python/envs/arcgispro-py3/python.exe")
@@ -34,7 +34,7 @@ arcpy$env$parallelProcessingFactor <- "100%"
 
 # 2.0 Packaging ----
 # For each year and each of the the three buffers, copy into single layers
-for (year in hfi.years) {
+for (year in hfi_series) {
   
   # 50m buffer
   # Create geodatabases
